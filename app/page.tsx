@@ -1,3 +1,4 @@
+"use client"
 import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn, sortPosts } from "@/lib/utils";
@@ -5,57 +6,50 @@ import { posts } from "#site/content";
 import Link from "next/link";
 import { PostItem } from "@/components/post-item";
 
+import { Fira_Code, Space_Mono, JetBrains_Mono, Roboto_Slab, Source_Code_Pro } from 'next/font/google'
+
+
+import {useState, useEffect} from 'react';const list = ['my life ', 'my work', 'my interests', 'my blogs', 'my books', 'my code'];
+const urls = ['/blog', '/blog', '/blog','/blog','/blog', '/blog']
+
+
+
+
 export default function Home() {
-  const latestPosts = sortPosts(posts).slice(0, 5);
+  const [activeIndex, setActiveIndex] = useState(0)
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowUp') {
+        setActiveIndex((prevIndex) => (prevIndex - 1 + list.length) % list.length);
+      } else if (event.key === 'ArrowDown') {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % list.length);
+      } else if (event.key == 'Enter') {
+        window.location.href = urls[activeIndex]
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+
+  }, [activeIndex]);
+
   return (
-    <>
-      <section className="space-y-6 pb-8 pt-6 md:pb-12 md:mt-10 lg:py-32">
-        <div className="container flex flex-col gap-4 text-center">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-balance">
-            Hello, I&apos;m James
-          </h1>
-          <p className="max-w-[42rem] mx-auto text-muted-foreground sm:text-xl text-balance">
-            Welcome to my blog template. Built using tailwind, shadcn, velite
-            and Nextjs 14.
-          </p>
-          <div className="flex flex-col gap-4 justify-center sm:flex-row">
-            <Link
-              href="/blog"
-              className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-fit")}
-            >
-              View my blog
+    <main className="flex flex-col items-center justify-center px-8">
+        <div className="grid grid-cols-1 gap-y-1 gap-x-1 w-full mt-[36vh] items-center justify-center justify-items-center align-items" style={{ fontFamily: 'JetBrains Mono' }}>
+          {list.map((id, index) => (
+            <Link href="/blog" key={id}>
+              <section className={`w-full ${activeIndex === index ? 'active' : ''}`} id={id}>
+                <h2 className={`text-sm lowercase`}>
+                  {activeIndex === index && <span className="text-[#22c55e]">&gt;</span>} 
+                  {"    "}<span className={`${activeIndex === index ? 'underline' : ''}`}>on {id}</span>
+                </h2>
+              </section>
             </Link>
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "w-full sm:w-fit"
-              )}
-            >
-              GitHub
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
-        <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
-          Latest Posts
-        </h2>
-        <ul className="flex flex-col">
-          {latestPosts.map((post) => (
-            <li key={post.slug} className="first:border-t first:border-border">
-              <PostItem
-                slug={post.slug}
-                title={post.title}
-                description={post.description}
-                date={post.date}
-              />
-            </li>
           ))}
-        </ul>
-      </section>
-    </>
-  );
+        </div>
+      </main>
+  );0
 }

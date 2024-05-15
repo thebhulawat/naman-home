@@ -18,5 +18,5 @@ interface MdxProps {
 
 export function MDXContent({ code }: MdxProps) {
   const Component = useMDXComponent(code);
-  return <Component components={components} />;
+  return <Component components={components} style={{ fontSize: '0.5em' }} />;
 }
