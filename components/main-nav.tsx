@@ -5,20 +5,30 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "@/styles/animate.css";
 
+import {useEffect} from 'react';
 
-import { Space_Mono} from 'next/font/google'
-const spaceMono = Space_Mono({
-  subsets: ['latin'],
-  weight: ['400', '700']
-});
 
 export function MainNav() {
   const pathname = usePathname();
-  const isHomePage = pathname === '/'
+  const isHomePage = pathname === '/';
+
+  // Check if the 'visited' flag is set in local storage
+  const visited = typeof window !== 'undefined' ? localStorage.getItem('visited') : null;
+
+  // If not visited, set the animation class and the 'visited' flag
+  const animationClass = !visited && isHomePage ? 'name-typewriter' : '';
+
+  // Set 'visited' flag in local storage after first render
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !visited) {
+      localStorage.setItem('visited', 'true');
+    }
+  }, [visited]);
+
   return (
     <nav className="flex items-center space-x-4 lg:space-x-6">
       <Link href="/" className="flex items-center">
-        <span className={`text-xl font-bold lowercase text-[#22c55e] ${isHomePage ? 'name-typewriter' : ''}`} style={{ fontFamily: 'JetBrains Mono' }}>{siteConfig.name}</span>
+        <span className={`text-xl font-bold lowercase text-[#22c55e] ${animationClass}`} style={{ fontFamily: 'JetBrains Mono' }}>{siteConfig.name}</span>
       </Link>
     </nav>
   );
