@@ -26,7 +26,7 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           inter.variable
-        )}
+    ) } style={{ fontFamily: 'JetBrains Mono' }}
       >
         <div className="relative flex min-h-screen flex-col bg-background">
           <SiteHeader/>

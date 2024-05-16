@@ -1,13 +1,12 @@
 export const siteConfig = {
     name: "naman",
-    // Update this 
+    // Todo: Update this 
     url: "https://example.com",
-    description: "Nextjs 14 blog using velite, tailwind and shadcn",
-    author: "thebhulawat",
+    description: "Life of Pi",
+    author: "Naman Jain",
     links: {
       twitter: "https://twitter.com/theBhulawat",
       github: "https://github.com/thebhulawat",
-      // update this
       mail: "mailto:namanbhulawat@gmail.com",
     },
   };

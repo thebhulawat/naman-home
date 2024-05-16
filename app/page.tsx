@@ -9,10 +9,10 @@ import { PostItem } from "@/components/post-item";
 import { Fira_Code, Space_Mono, JetBrains_Mono, Roboto_Slab, Source_Code_Pro } from 'next/font/google'
 
 
-import {useState, useEffect} from 'react';const list = ['my life ', 'my work', 'my interests', 'my blogs', 'my books', 'my code'];
-const urls = ['/blog', '/blog', '/blog','/blog','/blog', '/blog']
+import {useState, useEffect} from 'react';const list = ['my life ', 'my people', 'my work', 'my interests', 'my reflections', 'my books'];
+const urls = ['/life', '/people', '/work','/interests','/blog','/books']
 
-
+// TODo: tours, tags, people 
 
 
 export default function Home() {
