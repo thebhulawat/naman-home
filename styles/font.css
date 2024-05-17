@@ -1,0 +1,12 @@
+  /* public/fonts/global.css */
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'),
+    url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'JetBrains Mono', monospace;
+  }

@@ -5,8 +5,13 @@ import {SiteHeader} from "@/components/site-header";
 import {SiteFooter} from "@/components/site-footer";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
+//import '@/styles/font.css'
 
-const inter =  JetBrains_Mono({ subsets: ["latin"], variable: "--font-sans" });
+const jetBrainMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: "--font-sans"
+});
 
 
 export const metadata: Metadata = {
@@ -24,11 +29,10 @@ export default function RootLayout({
     <html lang="en" className="scroll-pt-[3.5rem] dark">
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.variable
-    ) } style={{ fontFamily: 'JetBrains Mono' }}
+          "min-h-screen font-sans antialiased",
+    ) } style={{ fontFamily: 'JetBrains Mono, monospace' }}
       >
-        <div className="relative flex min-h-screen flex-col bg-background">
+        <div className="relative flex min-h-screen flex-col">
           <SiteHeader/>
           <main className="flex-1">{children}</main>
           <SiteFooter/>

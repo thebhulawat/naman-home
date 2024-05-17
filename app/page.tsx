@@ -4,15 +4,14 @@ import { siteConfig } from "@/config/site";
 import { cn, sortPosts } from "@/lib/utils";
 import { posts } from "#site/content";
 import Link from "next/link";
-import { PostItem } from "@/components/post-item";
-
-
-
 import {useState, useEffect} from 'react';
+
+
+// TODO: tours, tags, people 
 const list = ['my life ', 'my people', 'my work', 'my interests', 'my reflections', 'my books'];
 const urls = ['/life', '/people', '/work','/interests','/blog','/books']
 
-// TODo: tours, tags, people 
+
 
 
 export default function Home() {
@@ -38,7 +37,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center px-8">
-        <div className="grid grid-cols-1 gap-y-1 gap-x-1 w-full mt-[36vh] items-center justify-center justify-items-center align-items" style={{ fontFamily: 'JetBrains Mono' }}>
+        <div className={`grid grid-cols-1 gap-y-1 gap-x-1 w-full mt-[36vh] items-center justify-center justify-items-center align-items`}>
           {list.map((id, index) => (
             <Link href="/blog" key={id}>
               <section className={`w-full ${activeIndex === index ? 'active' : ''}`} id={id}>

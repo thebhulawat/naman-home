@@ -71,7 +71,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <article className="py-6 px-7 prose dark:prose-invert max-w-3xl" style={{ fontFamily: 'JetBrains Mono' }}>
+    <article className="py-6 px-7 prose dark:prose-invert max-w-3xl">
       <h1 className="mb-7">{post.title}</h1>
       <MDXContent code={post.body} />
     </article>
