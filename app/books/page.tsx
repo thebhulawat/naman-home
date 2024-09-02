@@ -23,13 +23,13 @@ export default async function Life() {
           The days may seem long, but the years are short, and before we know
           it, we&aposre looking back wondering where the time went.
         </p>
-        <h2 className="font-bold text-lg mt-6 mb-4">
+        <h2 className="text-muted-foreground mt-6 mb-4">
           {" "}
           My shelf
           <ul className="list-disc pl-6">
             {shelf.map((book, index) => (
               <li key={index} className="mb-2">
-                <span className="font-semibold">{book.title}</span>
+                <span>{book.title}</span>
               </li>
             ))}
           </ul>
