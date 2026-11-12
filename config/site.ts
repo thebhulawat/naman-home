@@ -1,7 +1,6 @@
 export const siteConfig = {
     name: "naman",
-    // Todo: Update this 
-    url: "https://example.com",
+    url: "https://naman.stream",
     description: "Life of Pi",
     author: "Naman Jain",
     links: {
